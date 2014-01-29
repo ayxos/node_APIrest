@@ -22,3 +22,5 @@ npm install -g express
 express -c stylus express_example
 node app.js
 ```
+
+adding mongoose driver to conect node and mongoDB -> package.json
