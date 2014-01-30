@@ -27,3 +27,10 @@ node app.js
 + Create a file called db.js for db schema
 + insert db.js path at top of app.js
 + redo index.js to connect with new mongo DB
+
+#new_features
++ Adding restAPI CRUD methods
++ New db_model
++ Delete Method is working using a HACK get method
++ Adding nodemon, similar to grunt watch, there's no need to restart server, it does automatically
++ Adding pm2 to keep server live
