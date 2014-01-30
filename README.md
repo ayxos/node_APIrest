@@ -39,9 +39,9 @@ basic mogo commands
 ==========
 ```
 show dbs
-use gamedb
+use dbs_name
 db.dropDatabase();
 show collections
-db.games.find()
-db.collection.drop()
+db.collection_name.find().pretty()
+db.collection_name.drop()
 ```
