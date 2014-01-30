@@ -3,13 +3,15 @@
  * Module dependencies.
  */
 
-require( './routes/db' ); //for DB mongoose.
+require( './routes/db_model' ); //for DB mongoose.
+
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
+var routes = require('./routes'); // Para las funciones con la DB
+// var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+
 
 var app = express();
 
@@ -32,8 +34,16 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.post('/create', routes.create );
+// app.get('/users', user.list);
+app.post('/create', routes.postnew);
+
+// app.get('/', routes.getAll );
+
+app.get('/api/entries', routes.getAll );
+app.post('/api/entries', routes.postnew);
+app.get('/api/entries/:id', routes.getById);
+app.put('/api/entries/:id', routes.putById);
+app.delete('/api/entries/:id', routes.deleteById);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
