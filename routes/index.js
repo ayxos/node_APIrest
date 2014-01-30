@@ -7,6 +7,7 @@ exports.index = function ( req, res ){
     res.render( 'index', {
         title : 'RestAPI System with Mongoose and Node/Express',
         footer : '@2014 by M.A.P.S Powered by Node.js, Express, MongoDB ',
+        git : 'https://github.com/cybermarkus1/express_basic'
         entries : entries
     });
   });
