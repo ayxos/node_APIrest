@@ -1,6 +1,8 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+article {
+  padding: 50px;
 }
 a {
   color: #00b7ff;
@@ -34,4 +36,8 @@ span {
 footer {
   position: absolute;
   bottom: 0;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  padding: 50px;
 }

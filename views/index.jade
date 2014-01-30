@@ -1,35 +1,36 @@
 extends layout
 
 block content
-  h1 #{title}
-  div.addCommentForm
-        form( method="post", action="/create")
-            div
-                div
-                    span.label Name :
-                    input(type="text", class="nameTxt", name="title")
-                div
-                    span.label Comment :
-                    textarea(name="description")
-                div#addCommentSubmit
-                    input(type="submit", value="Add entry")
-  //- br
-  //- br
-  #entries
-    - each entry in entries
-        br
-        span Name: #{entry.title}
-        span Description: #{entry.description}
-        span Created: #{entry.created}
-        span Id: #{entry.id}
-        br
-        //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
-        a#api(href='api/entries/#{entry.id}', style="display:inline-block")
-          input(type='submit', value='View API')
-        form( method="get", action="/api/del/", style="display:inline-block")
-          input(type='hidden', value='#{entry.id}', name="id")
-          input(type='submit', value='Delete')
-        br
+  article
+    h1 #{title}
+    div.addCommentForm
+          form( method="post", action="/create")
+              div
+                  div
+                      span.label Name :
+                      input(type="text", class="nameTxt", name="title")
+                  div
+                      span.label Comment :
+                      textarea(name="description")
+                  div#addCommentSubmit
+                      input(type="submit", value="Add entry")
+    //- br
+    //- br
+    #entries
+      - each entry in entries
+          br
+          span Name: #{entry.title}
+          span Description: #{entry.description}
+          span Created: #{entry.created}
+          span Id: #{entry.id}
+          br
+          //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
+          a#api(href='api/entries/#{entry.id}', style="display:inline-block")
+            input(type='submit', value='View API')
+          form( method="get", action="/api/del/", style="display:inline-block")
+            input(type='hidden', value='#{entry.id}', name="id")
+            input(type='submit', value='Delete')
+          br
 
 block footer
   blockquote #{footer}
