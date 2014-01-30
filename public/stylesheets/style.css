@@ -17,9 +17,13 @@ textarea {
   margin-left: 10px;
 }
 input[type =button],
-input[type =submit] {
+input[type =submit],
+a#api {
   clear: both;
-  margin-left: 85px;
+  margin-left: 10px;
+  display: inline-block;
+}
+span {
   display: block;
 }
 .label {
@@ -27,12 +31,7 @@ input[type =submit] {
   display: block;
   float: left;
 }
-#comments .name {
-  float: left;
-}
-#comments .created_at {
-  float: right;
-}
-#comments .content {
-  clear: both;
+footer {
+  position: absolute;
+  bottom: 0;
 }

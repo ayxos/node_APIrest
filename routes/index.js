@@ -5,7 +5,8 @@ var regModel = mongoose.model( 'Model_name');
 exports.index = function ( req, res ){
   regModel.find( function ( err, entries, count ){
     res.render( 'index', {
-        title : 'restAPI System with Mongoose and Node/Express',
+        title : 'RestAPI System with Mongoose and Node/Express',
+        footer : '@2014 by M.A.P.S Powered by Node.js, Express, MongoDB ',
         entries : entries
     });
   });
@@ -34,8 +35,7 @@ exports.getAll = function (req, res){
 
 exports.postnew = function (req, res){
   var entry;
-  console.log("POST: ");
-  console.log(req.body);
+  console.log("POST: " + req.body);
   entry = new regModel({
     title : req.body.title,
     description : req.body.description,
@@ -80,6 +80,7 @@ exports.putById = function (req, res){
 
 exports.deleteById = function (req, res){
   //console.log(req);
+  console.log('DELETED: ' + req.query.id);
   //hay que fijarse en si es QUERY o UN Param
   regModel.findById(req.query.id, function (err, entry) {
     entry.remove(function (err) {
