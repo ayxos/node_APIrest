@@ -1,7 +1,6 @@
 var mongoose = require( 'mongoose' );
-//To use the model I created a variable regModel:
+//To use the model I created a variable regModel
 var regModel = mongoose.model( 'Model_name');
-// var Comment = mongoose.model( 'Comment' );
 
 exports.index = function ( req, res ){
   regModel.find( function ( err, entries, count ){
@@ -24,11 +23,11 @@ exports.index = function ( req, res ){
 
 
 exports.getAll = function (req, res){
-  return regModel.find(function (err, entries) {
+  regModel.find(function (err, entries) {
     if (!err) {
-      return res.send(entries);
+      res.send(entries);
     } else {
-      return console.log(err);
+      console.log(err);
     }
   });
 };
@@ -44,48 +43,52 @@ exports.postnew = function (req, res){
   });
   entry.save(function (err) {
     if (!err) {
-      return console.log("created");
+      console.log("created");
+      res.redirect('/');
     } else {
-      return console.log(err);
+      console.log(err);
+      res.redirect('/');
     }
   });
-  return res.send(entry);
 };
 
 exports.getById = function (req, res){
-  return regModel.findById(req.params.id, function (err, entry) {
+  regModel.findById(req.params.id, function (err, entry) {
     if (!err) {
-      return res.send(entry);
+      res.send(entry);
     } else {
-      return console.log(err);
+      console.log(err);
     }
   });
 };
 
 exports.putById = function (req, res){
-  return regModel.findById(req.params.id, function (err, entry) {
+  regModel.findById(req.params.id, function (err, entry) {
     entry.title = req.body.title;
     entry.description = req.body.description;
     entry.created = Date.now();
-    return entry.save(function (err) {
+    entry.save(function (err) {
       if (!err) {
         console.log("updated");
       } else {
         console.log(err);
       }
-      return res.send(entry);
+      res.send(entry);
     });
   });
 };
 
 exports.deleteById = function (req, res){
-  return regModel.findById(req.params.id, function (err, entry) {
-    return entry.remove(function (err) {
+  //console.log(req);
+  //hay que fijarse en si es QUERY o UN Param
+  regModel.findById(req.query.id, function (err, entry) {
+    entry.remove(function (err) {
       if (!err) {
         console.log("removed");
-        return res.send('');
+        res.redirect('/');
       } else {
         console.log(err);
+        res.redirect('/');
       }
     });
   });

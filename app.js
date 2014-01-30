@@ -43,7 +43,8 @@ app.get('/api/entries', routes.getAll );
 app.post('/api/entries', routes.postnew);
 app.get('/api/entries/:id', routes.getById);
 app.put('/api/entries/:id', routes.putById);
-app.delete('/api/entries/:id', routes.deleteById);
+//el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
+app.get('/api/del/', routes.deleteById);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

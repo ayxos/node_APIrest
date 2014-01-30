@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node app.js"
   },
+  "devDependencies": {
+    "nodemon" : "*"
+    },
   "dependencies": {
     "express": "3.4.8",
     "jade": "*",
