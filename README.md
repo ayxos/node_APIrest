@@ -33,7 +33,7 @@ node app.js
 + New db_model
 + Delete Method is working using a HACK get method
 + Adding nodemon, similar to grunt watch, there's no need to restart server, it does automatically
-+ Adding pm2 to keep server live
++ Adding pm2 to keep server alive
 
 Basic mongo commands
 ==========
