@@ -34,3 +34,14 @@ node app.js
 + Delete Method is working using a HACK get method
 + Adding nodemon, similar to grunt watch, there's no need to restart server, it does automatically
 + Adding pm2 to keep server live
+
+basic mogo commands
+==========
+```
+show dbs
+use gamedb
+db.dropDatabase();
+show collections
+db.games.find()
+db.collection.drop()
+```
