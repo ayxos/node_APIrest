@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  .api
+    h1 #{title}
+    //- div.addCommentForm
+    //-       form( method="post", action="/create")
+    //-           div
+    //-               div
+    //-                   span.label Name :
+    //-                   input(type="text", class="nameTxt", name="title")
+    //-               div
+    //-                   span.label Comment :
+    //-                   textarea(name="description")
+    //-               div#addCommentSubmit
+    //-                   input(type="submit", value="Add entry")
+    //- //- br
+    //- //- //- br
+    //- #entries
+    //-   - each entry in entries
+    pre.data
+      span.bracket {
+      .entry
+        span.str "Name" :
+        span.pln  #{entry.title}
+      .entry
+        span.str "Description" :
+        span.pln  #{entry.description}
+      .entry
+        span.str "Created" :
+        span.pln  #{entry.created}
+      .entry
+        span.str "Id" :
+        span.pln  #{entry.id}
+      span.bracket }
+
+    //- //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
+    //- a#api(href='api/entries/#{entry.id}', style="display:inline-block")
+    //-   input(type='submit', value='View API')
+    .options
+      form( method="get", action="/api/del/", style="display:inline-block")
+        input(type='hidden', value='#{entry.id}', name="id")
+        input(type='submit', value='Delete')
+
+block footer
+  blockquote #{footer}
+    a(href='https://github.com/cybermarkus1/express_basic') Github project

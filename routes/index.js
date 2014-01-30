@@ -55,7 +55,11 @@ exports.postnew = function (req, res){
 exports.getById = function (req, res){
   regModel.findById(req.params.id, function (err, entry) {
     if (!err) {
-      res.send(entry);
+      res.render( 'api', {
+          title : 'RestAPI',
+          footer : 'RestAPI @2014 by M.A.P.S Powered by Node.js, Express, MongoDB ',
+          entry : entry
+      });
     } else {
       console.log(err);
     }
