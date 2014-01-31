@@ -21,24 +21,15 @@ block content
       span.bracket }
 
     pre.data
-      input#up_id(type='hidden', value='#{entry.id}', name="id")          
       .entry
-          span.str Name :
-          input#update_title.pln(type="text", name="title", old-value='#{entry.title}')
-      .entry
-          span.str Description :
-          textarea#update_desc.pln(name="description", value='#{entry.description}')
+          input#key.str
+          input#value.pln
       div#addCommentSubmit
-          input#update(type="submit", value="Update entry", style="font-size:20;float:right")
+          input#update(type="submit", value="Update entry", style="font-size:20;float:right", data-id='#{entry.id}')
 
-
-    //- //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
-    //- a#api(href='api/entries/#{entry.id}', style="display:inline-block")
-    //-   input(type='submit', value='View API')
     .options
-      form( method="get", action="/api/del/", style="display:inline-block")
-        input(type='hidden', value='#{entry.id}', name="id")
-        input(type='submit', value='Delete')
+      input#del(type='submit', value='Delete', data-id='#{entry.id}')
+      a(href='/', style="float:right") Back
 
 block footer
   blockquote #{footer}

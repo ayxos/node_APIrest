@@ -24,7 +24,7 @@ exports.getAll = function (req, res){
 
 exports.postnew = function (req, res){
   var entry;
-  console.log("POST: " + req.body);
+  console.log("POST: " + req.params + req.body + req.query);
   entry = new regModel({
     title : req.body.title,
     description : req.body.description,
@@ -56,33 +56,37 @@ exports.getById = function (req, res){
 };
 
 exports.putById = function (req, res){
+  console.log(req.body);
   regModel.findById(req.params.id, function (err, entry) {
-    entry.title = req.body.title;
-    entry.description = req.body.description;
-    entry.created = Date.now();
+    for (key in req.body){
+      entry[key] = req.body[key];
+    }
     entry.save(function (err) {
       if (!err) {
         console.log("updated");
+        //Es imprescindible devolver datos, en este caso las llaves
+        res.send(201, {});
       } else {
         console.log(err);
+        res.send(500, "updated error");
       }
-      res.send(entry);
+      // res.send(entry);
     });
   });
 };
 
 exports.deleteById = function (req, res){
-  //console.log(req);
-  console.log('DELETED: ' + req.query.id);
+  // console.log(req);
+  console.log('DELETED: ' + req.params.id);
   //hay que fijarse en si es QUERY o UN Param
-  regModel.findById(req.query.id, function (err, entry) {
+  regModel.findById(req.params.id, function (err, entry) {
     entry.remove(function (err) {
       if (!err) {
         console.log("removed");
-        res.redirect('/');
+        res.send(201, "Removed: " + req.params.id);
       } else {
         console.log(err);
-        res.redirect('/');
+        res.send(500, "removed error");
       }
     });
   });

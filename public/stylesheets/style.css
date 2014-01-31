@@ -37,11 +37,18 @@ span {
   float: left;
 }
 footer {
-  bottom: 0;
+  position: fixed;
+  bottom: 0%;
   background: #000;
   color: #fff;
   width: 98%;
   padding: 1%;
+}
+#entries {
+  margin-bottom: 4%;
+}
+#entries .entry {
+  margin: 2%;
 }
 .api h1 {
   background: #d5d5d5;
@@ -68,6 +75,10 @@ footer {
 .api pre input,
 .api pre textarea {
   border: none;
+}
+.api pre textarea {
+  width: 90%;
+  height: 100px;
 }
 .api .entry {
   margin-left: 5%;

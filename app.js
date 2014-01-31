@@ -21,12 +21,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+// app.use(express.bodyParser());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -35,7 +38,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 // app.get('/users', user.list);
-app.post('/create', routes.postnew);
+// app.post('/create', routes.postnew);
 
 // app.get('/', routes.getAll );
 
@@ -44,6 +47,7 @@ app.post('/api/entries', routes.postnew);
 app.get('/api/entries/:id', routes.getById);
 app.put('/api/entries/:id', routes.putById);
 //el delete y put deberian hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
+app.delete('/api/entries/:id', routes.deleteById);
 app.get('/api/del/', routes.deleteById);
 
 http.createServer(app).listen(app.get('port'), function(){

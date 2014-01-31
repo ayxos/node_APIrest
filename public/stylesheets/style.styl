@@ -28,12 +28,17 @@ a
       float left
 
 footer
-  bottom 0
+  position fixed
+  bottom 0%
   background black
   color white
   width 98%
   padding 1%
 
+#entries
+  margin-bottom 4%
+  .entry
+    margin 2%
 
 .api
   h1
@@ -56,6 +61,9 @@ footer
     font-family Monaco,Menlo,Consolas,"Courier New",monospace;
     input,textarea
       border none
+    textarea
+      width 90%
+      height 100px
   .entry
     margin-left 5%
     .pln
