@@ -19,10 +19,10 @@ block content
     #entries
       - each entry in entries
           .entry
-            span Name: #{entry.title}
-            span Description: #{entry.description}
-            span Created: #{entry.created}
-            span Id: #{entry.id}
+            span title: #{entry.title}
+            span description: #{entry.description}
+            span created: #{entry.created}
+            span id: #{entry.id}
             br
             //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
             a#api(href='api/entries/#{entry.id}', style="display:inline-block")

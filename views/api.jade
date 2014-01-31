@@ -7,20 +7,23 @@ block content
     pre.data
       span.bracket {
       .entry
-        span.str "Name" :
+        span.str "title" :
         span.pln  #{entry.title}
       .entry
-        span.str "Description" :
+        span.str "description" :
         span.pln  #{entry.description}
       .entry
-        span.str "Created" :
+        span.str "created" :
         span.pln  #{entry.created}
       .entry
-        span.str "Id" :
+        span.str "id" :
         span.pln  #{entry.id}
       span.bracket }
 
     pre.data
+      .entry
+          span.str Key (ej: title)
+          span.pln Value (ej: hello)
       .entry
           input#key.str
           input#value.pln
