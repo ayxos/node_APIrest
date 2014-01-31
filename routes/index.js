@@ -12,17 +12,6 @@ exports.index = function ( req, res ){
   });
 };
 
-// exports.create = function ( req, res ){
-//   new Comment({
-//     username : req.body.username,
-//     content : req.body.comment,
-//     created : Date.now()
-//   }).save( function( err, comment, count ){
-//     res.redirect( '/' );
-//   });
-// };
-
-
 exports.getAll = function (req, res){
   regModel.find(function (err, entries) {
     if (!err) {

@@ -3,21 +3,7 @@ extends layout
 block content
   .api
     h1 #{title}
-    //- div.addCommentForm
-    //-       form( method="post", action="/create")
-    //-           div
-    //-               div
-    //-                   span.label Name :
-    //-                   input(type="text", class="nameTxt", name="title")
-    //-               div
-    //-                   span.label Comment :
-    //-                   textarea(name="description")
-    //-               div#addCommentSubmit
-    //-                   input(type="submit", value="Add entry")
-    //- //- br
-    //- //- //- br
-    //- #entries
-    //-   - each entry in entries
+
     pre.data
       span.bracket {
       .entry
@@ -33,6 +19,18 @@ block content
         span.str "Id" :
         span.pln  #{entry.id}
       span.bracket }
+
+    pre.data
+      input#up_id(type='hidden', value='#{entry.id}', name="id")          
+      .entry
+          span.str Name :
+          input#update_title.pln(type="text", name="title", old-value='#{entry.title}')
+      .entry
+          span.str Description :
+          textarea#update_desc.pln(name="description", value='#{entry.description}')
+      div#addCommentSubmit
+          input#update(type="submit", value="Update entry", style="font-size:20;float:right")
+
 
     //- //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
     //- a#api(href='api/entries/#{entry.id}', style="display:inline-block")

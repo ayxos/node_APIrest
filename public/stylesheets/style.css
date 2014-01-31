@@ -1,6 +1,7 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #f8f8ff;
+  margin: 0;
 }
 article {
   padding: 50px;
@@ -36,11 +37,10 @@ span {
   float: left;
 }
 footer {
-  position: absolute;
   bottom: 0;
   background: #000;
   color: #fff;
-  width: 96%;
+  width: 98%;
   padding: 1%;
 }
 .api h1 {
@@ -54,6 +54,7 @@ footer {
   padding: 8px;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+  margin-bottom: 5%;
 }
 .api .bracket {
   color: #93a1a1;
@@ -63,6 +64,10 @@ footer {
   font-size: 13px;
   line-height: 20px;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+}
+.api pre input,
+.api pre textarea {
+  border: none;
 }
 .api .entry {
   margin-left: 5%;
