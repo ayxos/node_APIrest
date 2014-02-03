@@ -6,32 +6,32 @@ block content
 
     pre.data
       span.bracket {
-      .entry
-        span.str "title" :
-        span.pln  #{entry.title}
-      .entry
-        span.str "description" :
-        span.pln  #{entry.description}
-      .entry
-        span.str "created" :
-        span.pln  #{entry.created}
-      .entry
-        span.str "id" :
-        span.pln  #{entry.id}
+
+      each key, value in keys
+        .entry
+          span.str #{key} :
+          span.pln  #{values[value]}
+
       span.bracket }
 
     pre.data
       .entry
-          span(style="width:20%").str Key ('title')
-          span(style="width:20%;margin-right:1%").pln Value ('hello')
+          |Select
+          b 'key'
+          | and set a
+          b 'value'
+
       .entry
-          input#key.str
+          select#keys(name='keys')
+            #keys
+              - each key in keys
+                option(value='#{key}') #{key}
           input#value.pln
       div#addCommentSubmit
-          input#update(type="submit", value="Update entry", style="font-size:20;float:right", data-id='#{entry.id}')
+          input#update(type="submit", value="Update entry", style="font-size:20;float:right", data-id='#{id}')
 
     .options
-      input#del(type='submit', value='Delete', data-id='#{entry.id}')
+      input#del(type='submit', value='Delete', data-id='#{id}')
       a(href='/', style="float:right") Back
 
 block footer

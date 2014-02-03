@@ -1,9 +1,8 @@
 $(document).ready(function(){
 
     $('input#update').click(function() {
-        var clave = $('#key').val();
+        var clave = $('#keys').val();
         var valor = $('#value').val();
-        console.log('object: ' + key + ' ' + value);
 
         var arr = {};
         arr[clave] = valor;
@@ -16,7 +15,6 @@ $(document).ready(function(){
              type: "PUT",
              url: URL,
              contentType: "application/json; charset=utf-8",
-             // data: object.toJsonString(),
              data: JSON.stringify(arr),
              dataType: "json",
              success: function (data, status, jqXHR) {

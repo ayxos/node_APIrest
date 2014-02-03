@@ -43,11 +43,39 @@ exports.postnew = function (req, res){
 
 exports.getById = function (req, res){
   regModel.findById(req.params.id, function (err, entry) {
+    var frase = entry.toString();
+    var subarr = frase.split(': ');
+    //Final array
+    var keys = new Array();
+    var values = new Array();
+
+    for (var i=0;i<subarr.length;i++){
+      var clave = subarr[i].substring(subarr[i].lastIndexOf(' ') + 1);
+      clave = clave.trim();
+      if (i < subarr.length - 1){
+        var valor  = subarr[i+1].substring(0, subarr[i+1].indexOf(','));
+      }
+
+      if (i == subarr.length - 2){
+        valor = subarr[subarr.length - 1].substring(0, subarr[i + 1].lastIndexOf('}') - 1);
+      }
+      valor = valor.trim();
+      console.log(i + ' : ' + valor);
+
+      var vsExprReg = /^[a-z\sáéíóúñ.,_\-\&\/]+$/i;
+      if (vsExprReg.test(clave)) {
+        keys[i] = clave;
+        values[i] = valor;
+      }
+    }
+
     if (!err) {
       res.render( 'api', {
           title : 'RestAPI',
           footer : 'RestAPI @2014 by M.A.P.S Powered by Node.js, Express, MongoDB ',
-          entry : entry
+          id : entry.id,
+          keys : keys,
+          values : values
       });
     } else {
       console.log(err);
