@@ -1,7 +1,7 @@
-Express_basic
+RestAPI System with Mongoose and Node/Express
 =============
 
-node stylus/jade express basic server
+RestAPI System with Mongoose and Node/Express
 
 It's very simple
 
