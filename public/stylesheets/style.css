@@ -99,6 +99,7 @@ footer {
   width: 50%;
   margin: auto auto;
   padding: 12px;
+  margin-bottom: 100px;
 }
 .api .options input {
   font-size: 20px;
