@@ -8,21 +8,23 @@ block content
               div
                   div
                       span.label Name :
-                      input(type="text", class="nameTxt", name="title")
+                      input(name="name")
                   div
-                      span.label Comment :
-                      textarea(name="description")
+                      span.label Surname :
+                      input(name="surname")
+                  div
+                      span.label Age :
+                      input(name="age")
                   div#addCommentSubmit
                       input(type="submit", value="Add entry")
-    //- br
-    //- br
+
     #entries
       - each entry in entries
           .entry(style="padding:2%;border:1px solid #51b6ae ")
-            span title: #{entry.title}
-            span description: #{entry.description}
-            span created: #{entry.created}
-            span id: #{entry.id}
+            span #{entry}
+            //- span #{entry.surname}
+            //- span #{entry.age}
+            //- span #{entry.id}
             br
             //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
             a#api(href='api/entries/#{entry.id}', style="display:inline-block")

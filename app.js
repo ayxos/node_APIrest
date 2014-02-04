@@ -1,9 +1,8 @@
-
 /**
  * Module dependencies.
  */
 
-require( './routes/db_model' ); //for DB mongoose.
+require( './routes/model_db' ); //for DB mongoose.
 
 
 var express = require('express');
@@ -21,7 +20,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
-// app.use(express.bodyParser());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -36,15 +34,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-// app.get('/users', user.list);
-// app.post('/create', routes.postnew);
-
-// app.get('/', routes.getAll );
-
-app.get('/api/entries', routes.getAll );
+app.get('/', routes.getAll);
 app.post('/api/entries', routes.postnew);
-app.get('/api/entries/:id', routes.getById);
+app.get('/api/entries/:id', routes.getById_complex);
+app.get('/api/:id', routes.getById);
 app.put('/api/entries/:id', routes.putById);
 //el delete y put deberian hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
 app.delete('/api/entries/:id', routes.deleteById);

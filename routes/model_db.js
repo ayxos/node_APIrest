@@ -2,9 +2,9 @@ var mongoose = require( 'mongoose' );
 var Schema   = mongoose.Schema;
 
 var Model = new Schema({
-    title : String,
-    description  : String,
-    created  : Date
+    name : String,
+    surname : String,
+    age : Number
 });
 
 //To use the model I created a variable regModel:

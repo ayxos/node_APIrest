@@ -2,20 +2,15 @@ var mongoose = require( 'mongoose' );
 //To use the model I created a variable regModel
 var regModel = mongoose.model( 'Model_name');
 
-exports.index = function ( req, res ){
-  regModel.find( function ( err, entries, count ){
-    res.render( 'index', {
-        title : 'RestAPI System with Mongoose and Node/Express',
-        footer : '@2014 by M.A.P.S Powered by Node.js, Express, MongoDB ',
-        entries : entries
-    });
-  });
-};
 
 exports.getAll = function (req, res){
   regModel.find(function (err, entries) {
     if (!err) {
-      res.send(entries);
+      res.render( 'index', {
+          title : 'RestAPI System with Mongoose and Node/Express',
+          footer : '@2014 by M.A.P.S Powered by Node.js, Express, MongoDB ',
+          entries : entries
+      });
     } else {
       console.log(err);
     }
@@ -25,11 +20,10 @@ exports.getAll = function (req, res){
 exports.postnew = function (req, res){
   var entry;
   console.log("POST: " + req.params + req.body + req.query);
-  entry = new regModel({
-    title : req.body.title,
-    description : req.body.description,
-    created : Date.now(),
-  });
+  entry = new regModel();
+  for (key in req.body){
+    entry[key] = req.body[key];
+  }
   entry.save(function (err) {
     if (!err) {
       console.log("created");
@@ -42,6 +36,16 @@ exports.postnew = function (req, res){
 };
 
 exports.getById = function (req, res){
+  regModel.findById(req.params.id, function (err, entry) {
+    if (!err) {
+      res.send(entry);
+    } else {
+      console.log(err);
+    }
+  });
+};
+
+exports.getById_complex = function (req, res){
   regModel.findById(req.params.id, function (err, entry) {
     var frase = entry.toString();
     var subarr = frase.split(': ');
