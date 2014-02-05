@@ -27,6 +27,9 @@ block content
             //- span #{entry.id}
             br
             //-el delete deberia hacerse con un AJAX, para proximamente...se hace una Ñapa con un GET
+
+            a#api(href='api/#{entry.id}', style="display:inline-block")
+              input(type='submit', value='View JSON')
             a#api(href='api/entries/#{entry.id}', style="display:inline-block")
               input(type='submit', value='View API')
             input#del(type='submit', value='Delete', data-id='#{entry.id}')
