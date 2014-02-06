@@ -3,7 +3,9 @@ extends layout
 block content
   article
     h1 #{title}
-    div.addCommentForm
+    ._modal(data-modal='modal1') jlkjlkj
+    .modal-overlay
+    #modal1.addCommentForm.bck.b_pink.text.color.c_white.padding_big.modal
           form( method="post", action="/api/entries")
               div
                   div
