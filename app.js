@@ -1,18 +1,9 @@
-/**
- * Module dependencies.
- */
-
 require( './routes/model_db' ); //for DB mongoose.
-
 
 var express = require('express');
 var routes = require('./routes'); // Para las funciones con la DB
 var http = require('http');
 var path = require('path');
-
-//Para los test
-var test = require('./routes/test');
-
 
 var app = express();
 
@@ -26,27 +17,14 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 
-//implementing sessions
-app.use(express.cookieParser('pass'));
-app.use(express.session());
-
-
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
-app.get('/test', test.reg);
-
-app.get('/search', test.search);
 
 app.get('/', routes.getAll);
 app.post('/api/entries', routes.postnew);
