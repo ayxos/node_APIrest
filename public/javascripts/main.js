@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var items = document.getElementsByClassName('del');
     if (items != null){
-        console.log('delete/s found!!');
+        // console.log('delete/s found!!');
         for (var i = 0; i < items.length; i++){
             items[i].addEventListener("click", function(e) {
                 e.preventDefault();
-                console.log('you did click');
+                // console.log('you did click');
 
                 var id = this.getAttribute('data-id');
                 var URL = ("/api/entries/" + id);
