@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             request.onload = function() {
               if (request.status >= 200 && request.status < 400){
-                console.log("Updating success", request);
+                console.log("Updating success");
                 location.reload();
                 // resp = request.responseText;
               } else {
