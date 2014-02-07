@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 request.onload = function() {
                   if (request.status >= 200 && request.status < 400){
-                    console.log("Deleting success", request);
+                    console.log("Deleting success");
                     location.href = '/';
                     // resp = request.responseText;
                   } else {
